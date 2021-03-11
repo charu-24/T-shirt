@@ -1,4 +1,4 @@
-import { API } from "../../backend";
+const API = "https://tshirts24.herokuapp.com"
 
 
 export const signup = user => {
