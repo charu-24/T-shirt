@@ -7,6 +7,7 @@
 body {
   background: #343a40;
   font-family: 'Ravi Prakash', cursive;
+
 }
 .Loading{
   text-align: center;
@@ -20,5 +21,19 @@ footer{
   left:0;
 }
 h2{
+  color:white
+}
+.ImageDiv{
+  width:100%;
+  height: 60vh;
+  padding: 20vh;
+  
+  background-image: url("./tshirt.jpg");
+  background-size: cover;
+  box-shadow: 15px 5px 10px black;
+}
+.H1style{
+  font-size: 5em;
+  text-shadow: 15px 5px 10px black;
   color:white
 }
