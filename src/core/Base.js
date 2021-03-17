@@ -1,9 +1,10 @@
 import React from 'react'
+import { isAutheticated } from '../auth/helper'
 import Menu from "./Menu"
 
 const Base = ({
-    title="My Title",
-    description="My description",
+    title="",
+    description="",
     className="bg-dark text-white p-4",
     children
 })  => (
@@ -18,7 +19,8 @@ const Base = ({
             </div>
             <div className={className}>{children}</div>
         </div>
-        <footer className="footer bg-dark mt-auto py-2">
+        {!isAutheticated() && (
+            <footer className="footer bg-dark mt-auto py-2">
             <div className="container-fluid bg-success text-white text-center p-3">
                 <h6>If u got any questions feel free to reach out..</h6>
                 <button className="btn  btn-warning p-2">Contact Us</button>
@@ -30,6 +32,7 @@ const Base = ({
                 </span>
             </div>        
         </footer>
+        )}
     </div>
 )
 

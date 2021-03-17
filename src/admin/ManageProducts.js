@@ -24,9 +24,20 @@ const ManageProducts = () => {
         })
       }
 
+    const myStyle={
+      fontSize:"1.5em",
+      color:"darkgray",
+      
+     
+
+    
+    }
+
     useEffect(() => {
         preload()
     }, [])
+
+    console.log(products)
 
     //delete product
     const deleteThisProduct = productId => {
@@ -41,40 +52,121 @@ const ManageProducts = () => {
       })
     }
 
-    return (
-        <Base title="Welcome admin" description="Manage products here">
-      <h2 className="mb-4">All products:</h2>
-      <Link className="btn btn-info" to={`/admin/dashboard`}>
-        <span className="">Admin Home</span>
-      </Link>
-      <div className="row">
-        <div className="col-12">
-          <h2 className="text-center text-white my-3">Total 3 products</h2>
+    //tables
+    const loadAllTheProducts = ()=>{
+      
+         return(
+          <div class="">
+          <div class="row">
+            <div class="col-1 ">
+              
+            </div>
+            <div class="col-2">
+            <h2>Name</h2>
 
-         {products && products.map((product, index) =>(
-            <div key={index} className="row text-center mb-2 ">
-            <div className="col-4">
-              <h3 className="text-white text-left">{product.name}</h3>
+              {products.map((product, index) =>{
+                return (
+                    
+                   <p style={myStyle}>{product.name}</p>
+                    
+                )
+            })}
             </div>
-            <div className="col-4">
-              <Link
-                className="btn btn-success"
-                to={`/admin/product/update/${product._id}`}
-              >
-                <span className="">Update</span>
-              </Link>
+            <div class="col-2">
+            <h2>Category</h2>
+              {products.map((product, index) =>{
+                return (
+                    
+                   <p style={myStyle}>{product.category.name}</p>
+                    
+                )
+            })}
             </div>
-            <div className="col-4">
+          
+            <div class="col-2">
+            <h2>Stock</h2>
+              {products.map((product, index) =>{
+                return (
+                    
+                   <p style={myStyle}>{product.stock}</p>
+                    
+                )
+            })}
+            </div>
+            <div class="col-1">
+            <h2>Sold</h2>
+
+              {products.map((product, index) =>{
+                return (
+                    
+                   <p style={myStyle}>{product.sold}</p>
+                    
+                )
+            })}
+
+            </div>
+            <div class="col-2">
+            <h2>Updation</h2>
+
+              {products.map((product, index) =>{
+                return (
+                    
+                  <Link
+                  className="btn btn-success"
+                  to={`/admin/product/update/${product._id}`}
+                >
+                  <span style={myStyle}>Update</span>
+                </Link>
+                    
+                )
+            })}
+
+            </div>
+            <div class="col-1">
+            <h2>Deletion</h2>
+
+          {products.map((product, index) =>{
+            return (
+                
               <button onClick={() => {
                 deleteThisProduct(product._id)
-              }} className="btn btn-danger">
+              }} className="btn btn-danger" style={myStyle}>
                 Delete
               </button>
-            </div>
-          </div>
-         ))}
+              
+            )
+        })}
+
         </div>
+            
+          </div>
+          
+          
+        </div>
+         )
+      
+    }
+
+    return (
+        <Base title="Manage your products here" className="container bg-info p-4">
+        <Link className="btn btn-dark" to={`/admin/dashboard`}>
+        <span className="">Admin Home</span>
+      </Link>
+     
+     
+     
+       
+         
+      <br></br>
+      <br></br><br></br>
+      <div className="bg-dark">
+      {loadAllTheProducts()}
       </div>
+         
+
+       
+        
+    
     </Base>
     )
 }

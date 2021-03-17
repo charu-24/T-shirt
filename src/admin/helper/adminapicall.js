@@ -1,10 +1,11 @@
+import { API } from "../../backend"
 
 
 
 //category calls
 
 export const createCategory = (userId, token, category) =>{
-    return fetch(`${process.env.API}/category/create/${userId}`, {
+    return fetch(`${API}/category/create/${userId}`, {
         method: "POST",
         headers:{
             Accept: "application/json",
@@ -20,7 +21,7 @@ export const createCategory = (userId, token, category) =>{
 
 //get all categories
 export const getAllCategory = () => {
-    return fetch(`${process.env.API}/categories`, {
+    return fetch(`${API}/categories`, {
         method: "GET"
     })
     .then(response => {
@@ -34,7 +35,7 @@ export const getAllCategory = () => {
 //products calls
 
 export const createProduct =(userId, token,product) => {
-    return fetch(`${process.env.API}/product/create/${userId}`, {
+    return fetch(`${API}/product/create/${userId}`, {
         method: "POST",
         headers:{
             Accept: "application/json",
@@ -51,7 +52,7 @@ export const createProduct =(userId, token,product) => {
 
 //get all products
 export const getAllProduct = () => {
-    return fetch(`${process.env.API}/products`, {
+    return fetch(`${API}/products`, {
         method: "GET"
     })
     .then(response => {
@@ -85,7 +86,7 @@ export const deleteProduct =(productId, userId, token) =>{
 //get a product
 export const getProduct = productId =>{
     
-    return fetch(`${process.env.API}/product/${productId}`, {
+    return fetch(`${API}/product/${productId}`, {
         method: "GET"
     })
     .then(response => {
@@ -98,7 +99,7 @@ export const getProduct = productId =>{
 //update a product
 export const updateProduct = (productId, userId, token, product) =>{    
     
-    return fetch(`${process.env.API}/product/${productId}/${userId}`, {
+    return fetch(`${API}/product/${productId}/${userId}`, {
         
         method: "PUT",
         headers:{
@@ -119,8 +120,8 @@ export const updateProduct = (productId, userId, token, product) =>{
 ///DELETE CATEGORY
 
 export const deleteCategory =(categoryId, userId, token) =>{
-    console.log(`${process.env.API}/product/${userId}`)
-    return fetch(`${process.env.API}/category/${categoryId}/${userId}`, {
+    console.log(`${API}/product/${userId}`)
+    return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "DELETE",
         headers:{
             Accept: "application/json",
@@ -138,7 +139,7 @@ export const deleteCategory =(categoryId, userId, token) =>{
 
 //update categories
 export const updateThisCategory = (categoryId, userId, token, category) =>{
-    return fetch(`${process.env.API}/category/${categoryId}/${userId}`, {
+    return fetch(`${API}/category/${categoryId}/${userId}`, {
         method: "PUT",
         headers:{
             Accept: "application/json",
@@ -154,7 +155,7 @@ export const updateThisCategory = (categoryId, userId, token, category) =>{
 
 //get category
 export const getCategory = categorytId =>{
-    return fetch(`${process.env.API}/category/${categorytId}`, {
+    return fetch(`${API}/category/${categorytId}`, {
         method: "GET"
     })
     .then(response => {

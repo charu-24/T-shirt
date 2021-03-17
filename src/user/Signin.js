@@ -10,6 +10,7 @@ import { isAutheticated, authenticate, signout, signin } from "../auth/helper"
 const Signin = () => {
 
     const [values, setValues] = useState({
+        firstName:"",
         email:"",
         encry_password:"",
         error:"",
@@ -35,6 +36,7 @@ const Signin = () => {
                 setValues({...values, error:data.error, email:"",
                 encry_password:"",loading: false})
             }else{
+                console.log(data)
                 authenticate(data, () => {
                     setValues({
                         ...values,
@@ -55,7 +57,8 @@ const Signin = () => {
             if( user && user.role===1){
                 return <Redirect to="/admin/dashboard" />
             }else{
-                return <Redirect to="/user/dashboard" />
+                console.log(user)
+                return <Redirect to="/user/dashboard"  name={user.firstName} />
             }
         }
         if(isAutheticated()){
@@ -101,8 +104,12 @@ const Signin = () => {
 const loadingMessage = () => {
     return (
       loading && (
-          <div className="alert alert-info">
-            <h1>Loading...</h1>
+          <div className="Loading">
+          <button class="btn btn-primary" type="button" disabled>
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          <span class="visually-hidden">Loading...</span>
+        </button>
+        
           </div>
       )
     );

@@ -14,18 +14,19 @@ import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import UpdateCategory from "./admin/UpdateCategory";
 import Cart from "./core/Cart";
+import Hello from "./core/Hello";
 
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Hello} />
         <Route path="/signup"  component={Signup} />
         <Route path="/signin" component={Signin} />
         <Route path="/cart" component={Cart} />
-        
-        <PrivateRoute path="/user/dashboard" component={UserDashboard}  />
+        <PrivateRoute path="/products" component={Home}  />
+        <PrivateRoute path="/user/dashboard" component={UserDashboard}   />
         <AdminRoute path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute path="/admin/create/category" component={AddCategory} />
         <AdminRoute path="/admin/categories" component={ManageCategories} />

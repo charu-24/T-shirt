@@ -17,16 +17,20 @@ const currentTab =(history, path) =>{
 const Menu = ({ history }) => (
     <div>
         <ul className="nav nav-tabs bg-dark">
+           {isAutheticated() && isAutheticated().user.role ===0 && (
             <li className="nav-item">
-                <Link 
-                style = { currentTab(history, "/") }
-                className="nav-link" to="/">Home</Link>
-            </li>
-            <li className="nav-item">
+            <Link 
+            style = { currentTab(history, "/products") }
+            className="nav-link" to="/products">Home</Link>
+        </li>
+           )}
+            {isAutheticated() && isAutheticated().user.role ===0 && (
+                <li className="nav-item">
                 <Link 
                 style = { currentTab(history, "/cart") }
                 className="nav-link" to="/cart">Cart</Link>
             </li>
+            )}
             {isAutheticated() && isAutheticated().user.role ===0 && (
                 <li className="nav-item">
                 <Link
